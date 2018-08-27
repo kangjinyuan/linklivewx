@@ -140,34 +140,4 @@ image {
   margin: auto auto;
 }
 
-.carnum {
-  width: 610rpx;
-  height: 100%;
-  position: absolute;
-  top: 120rpx;
-  left: 40rpx;
-}
 
-.carnum-text-box {
-  width: 76.25rpx;
-  height: 100%;
-  position: relative;
-  float: left;
-}
-
-.carnum-text-box .carnum-text {
-  width: 64rpx;
-  height: 84rpx;
-  border-radius: 6rpx;
-  border: 2rpx solid #999;
-  font-size: 32rpx;
-  line-height: 84rpx;
-  text-align: center;
-  color: #333;
-  float: left;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  margin: auto auto;
-}
