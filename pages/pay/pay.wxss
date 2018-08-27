@@ -1,0 +1,112 @@
+.btn {
+  width: 100%;
+  height: 88rpx;
+  margin: 0rpx auto;
+  font-size: 36rpx;
+  line-height: 88rpx;
+  color: #fff;
+  text-align: center;
+  border-radius: 10rpx;
+  background-color: #fda414;
+}
+
+.btn button {
+  width: 100%;
+  height: 88rpx;
+  background-color: #fda414;
+  color: #fff;
+  text-align: center;
+  font-size: 36rpx;
+  line-height: 88rpx;
+}
+
+.line {
+  width: 100%;
+  height: 40rpx;
+}
+
+.line image, .topay image {
+  width: 100%;
+  height: 100%;
+}
+
+.payinfobox {
+  width: 100%;
+  margin: 20rpx auto 0rpx;
+  position: relative;
+}
+
+.payinfo {
+  width: 304rpx;
+  height: 90rpx;
+  overflow: hidden;
+  float: left;
+}
+
+.payinfo .title {
+  width: 100%;
+  height: 60rpx;
+  text-align: center;
+  font-size: 30rpx;
+  color: #333;
+}
+
+.payinfo .info {
+  width: 100%;
+  text-align: center;
+  font-size: 26rpx;
+  color: #498ad2;
+}
+
+.cutline {
+  width: 2rpx;
+  height: 50rpx;
+  float: left;
+  margin-top: 20rpx;
+  background-color: #ccc;
+}
+
+.paybox {
+  width: 100%;
+  height: 88rpx;
+  border-top: 1rpx solid #ccc;
+  position: absolute;
+  bottom: 0rpx;
+  left: 0rpx;
+}
+
+.paymoney {
+  width: auto;
+  height: 100%;
+  font-size: 30rpx;
+  line-height: 88rpx;
+  color: #333;
+  float: left;
+  margin-left: 40rpx;
+}
+
+.paymoney text {
+  color: #fda414;
+}
+
+.topaybtn {
+  width: 120rpx;
+  padding-left: 40rpx;
+  height: 100%;
+  float: right;
+  background-color: #fda414;
+  font-size: 30rpx;
+  line-height: 88rpx;
+  color: #fff;
+  position: relative;
+}
+
+.topay {
+  width: 21rpx;
+  height: 27rpx;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 110rpx;
+  margin: auto auto;
+}

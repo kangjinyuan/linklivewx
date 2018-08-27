@@ -1,0 +1,160 @@
+.btn {
+  width: 100%;
+  height: 88rpx;
+  margin: 0rpx auto;
+  font-size: 36rpx;
+  line-height: 88rpx;
+  color: #fff;
+  text-align: center;
+  border-radius: 10rpx;
+  background-color: #fda414;
+}
+
+.btn button {
+  width: 100%;
+  height: 88rpx;
+  background-color: #fda414;
+  color: #fff;
+  text-align: center;
+  font-size: 36rpx;
+  line-height: 88rpx;
+}
+
+.hlist {
+  width: 100%;
+  overflow: hidden;
+}
+
+.hlist view {
+  padding: 17rpx 10rpx;
+  float: left;
+  margin-right: 20rpx;
+  margin-bottom: 20rpx;
+  font-size: 24rpx;
+  color: #666;
+  border: 2rpx solid #ccc;
+  border-radius: 10rpx;
+}
+
+.hlist .selected, .car .selected,.carnum .selected  {
+  border: 2rpx solid #fda414;
+}
+
+.addbox {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 0rpx solid #ccc;
+}
+
+.addbox .add {
+  width: 100%;
+  height: 52rpx;
+  position: relative;
+}
+
+.addbox .add image {
+  width: 20rpx;
+  height: 20rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto auto;
+}
+
+.addbox .text {
+  width: 100%;
+  height: 18rpx;
+  font-size: 18rpx;
+  line-height: 18rpx;
+  text-align: center;
+  color: #999;
+}
+.newenergy{
+  width: 64rpx;
+  height: 84rpx;
+  font-size: 32rpx;
+  line-height: 84rpx;
+  text-align: center;
+  color: #333;
+}
+
+.keybox {
+  width: 100%;
+  height: 510rpx;
+  overflow: hidden;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 10000;
+}
+
+.keynum{
+  width: 100%;
+  height: 430rpx;
+  background-color: #d2d5dc;
+  overflow: hidden;
+}
+
+.key {
+  width: 75rpx;
+  height: 106rpx;
+  overflow: hidden;
+  float: left;
+  position: relative;
+}
+
+.key-in {
+  width: 64rpx;
+  height: 86rpx;
+  border-radius: 10rpx;
+  box-shadow: 0rpx 1rpx 1rpx 0rpx #656a6e;
+  font-size: 38rpx;
+  line-height: 86rpx;
+  background-color: #fff;
+  color: #333;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto auto;
+}
+
+.key-in image{
+  width: 44rpx;
+  height: 32rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto auto;
+}
+
+.key-del{
+  float: right;
+}
+
+.closebox{
+  width: 100%;
+  height: 80rpx;
+  background-color:#efefef;
+  border-top: 2rpx solid #ccc;
+  border-bottom: 2rpx solid #ccc; 
+}
+
+.close {
+  width: auto;
+  height: 80rpx;
+  font-size: 28rpx;
+  line-height: 80rpx;
+  color: #fda414;
+  float: right;
+  margin-right: 30rpx;
+}

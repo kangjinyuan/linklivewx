@@ -1,0 +1,46 @@
+<view class='container'>
+  <view class='cbg'>
+    <view class='titlebox'>
+      <view class='title'>欢迎使用邻客智慧停车服务</view>
+      <view class='dir'>邻客缴费</view>
+    </view>
+    <view class='cbox'>
+      <view class='carbox'>
+        <view class='sreachcar'>
+          <view class='car'>
+            <view class='car-text-box' wx:for='{{carnoarr}}' wx:key="item">
+              <view class='car-text'>{{item}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class='line'>
+        <image src='../../images/line.png'></image>
+      </view>
+      <view class='bbox'>
+        <view class='btitle bctitle'>已停10分钟</view>
+        <view class='payinfobox'>
+          <view class='payinfo'>
+            <view class='title'>停车单价</view>
+            <view class='info'>5元/小时</view>
+          </view>
+          <view class='cutline'></view>
+          <view class='payinfo'>
+            <view class='title'>入场时间</view>
+            <view class='info'>2018-08-22 13:34</view>
+          </view>
+        </view>
+      </view>
+      <view class='paybox'>
+        <view class='paymoney'>待支付：
+          <text>5.00</text>元</view>
+        <view class='topaybtn'>
+          支付
+          <view class='topay'>
+            <image src='../../images/topay.png'></image>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

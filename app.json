@@ -1,0 +1,13 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/pay/pay"
+  ],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "邻客智慧停车",
+    "navigationBarBackgroundColor": "#fda414",
+    "backgroundColor": "#fafafa"
+  },
+  "debug": true
+}
