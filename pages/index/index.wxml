@@ -55,7 +55,7 @@
         <view class='btn' wx-if='{{getuserstate == 0}}'>
           <button class='getUserbtn' open-type="getUserInfo" bindgetuserinfo='getuserinfo'>授权</button>
         </view>
-        <view class='btn' wx-if='{{getuserstate == 1}}' bindtap='check'>查询</view>
+        <view class='btn' wx-if='{{getuserstate == 1}}' data-carno='carno' bindtap='topay'>查询</view>
       </view>
       <view class='bbox'>
         <view class='btitle'>历史缴费车辆</view>

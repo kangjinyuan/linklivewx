@@ -34,11 +34,8 @@
       <view class='paybox'>
         <view class='paymoney'>待支付：
           <text>5.00</text>元</view>
-        <view class='topaybtn'>
+        <view class='topaybtn' bindtap='pay'>
           支付
-          <view class='topay'>
-            <image src='../../images/topay.png'></image>
-          </view>
         </view>
       </view>
     </view>

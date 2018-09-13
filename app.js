@@ -5,6 +5,7 @@ App({
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
+    wx.setStorageSync('logs', logs);
     // 获取用户信息
     wx.getUserInfo({
       success: res => {
@@ -15,7 +16,7 @@ App({
       }
     })
   },
-  bindTel: function (callback) {
+  bindAccount: function (callback) {
     let that = this;
     wx.getUserInfo({
       withCredentials: true,
@@ -27,17 +28,16 @@ App({
             let paras = {
               encryptedData: encryptedData,
               iv: iv,
-              registerPlatform: 'wx_xcx',
+              platform: 'wx_xcx',
               accessCode: res.code
             }
-            paras = JSON.stringify(paras);
-            that.request('post', 'sms/thirdPartyLogin.do', paras, function (res) {
+            that.request('post', '/account/thirdPartyLogin.do', paras, function (res) {
               wx.setStorageSync('login', true);
               wx.setStorageSync('getuserstate', "1");
-              wx.setStorageSync('accountId', res.data.data.id);
+              wx.setStorageSync('accountId', res.data.id);
               callback();
             }, function () {
-              that.bindTel(callback);
+              that.bindAccount(callback);
             })
           }
         })
@@ -51,16 +51,16 @@ App({
       wx.getSetting({
         success: function (res) {
           if (res.authSetting["scope.userInfo"]) {
-            that.bindTel(callback);
+            that.bindAccount(callback);
           } else {
             wx.setStorageSync('getuserstate', "0");
             wx.showModal({
-              title: '麦瑞康',
-              content: '麦瑞康申请获得你的公开信息（昵称，头像等）,请先授权',
+              title: '邻客智慧停车',
+              content: '邻客智慧停车申请获得你的公开信息（昵称，头像等）,请先授权',
               cancelText: '取消',
               cancelColor: '#666',
               confirmText: '确定',
-              confirmColor: '#ea5404',
+              confirmColor: '#fda414',
               success: function (res) {
                 if (res.confirm) {
                 }
@@ -78,27 +78,31 @@ App({
       title: 'loading···'
     })
     let that = this;
+    let accountId = wx.getStorageSync("accountId");
     let timestamp = new Date().getTime();
+    paras.accountId = accountId;
+    paras = JSON.stringify(paras);
     wx.request({
       url: that.globalData.crurl + rurl + "?timestamp=" + timestamp,
       data: paras,
       method: method,
       dataType: 'json',
       success: function (res) {
-        wx.hideLoading();
-        if (res.data.state == true || res.data.code == '0000') {
+        if (res.data.code == '0000') {
           okcallback(res);
-        } else if (res.data.state == false || res.data.code != '0000') {
-          nocallback();
+        } else{
+          nocallback(res);
         }
+        wx.hideLoading();
       },
       fail: function (res) {
         wx.showModal({
-          title: '麦瑞康',
+          title: '邻客智慧停车',
           content: 'sorry 服务器已经离开了地球',
-          confirmColor: '#ea5404',
+          confirmColor: '#fda414',
           showCancel: false
         })
+        wx.hideLoading();
       }
     })
   },
@@ -114,7 +118,19 @@ App({
     that.setData({ page: that.data.page + 1 });
     okcallback();
   },
+  setTime: function (time,callback){
+    let date = new Date(time);
+    let Y = date.getFullYear() + '-';
+    let M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+    let D = (date.getDate() < 10 ? '0' + (date.getDate()) : date.getDate()) + ' ';
+    let h = (date.getHours() < 10 ? '0' + (date.getHours()) : date.getHours()) + ':';
+    let m = (date.getMinutes() < 10 ? '0' + (date.getMinutes()) : date.getMinutes()) + ':';
+    let s = (date.getSeconds() < 10 ? '0' + (date.getSeconds()) : date.getSeconds());
+    let rtime =  Y + M + D + h + m + s;
+    callback(rtime);
+  },
   globalData: {
-    crurl: 'https://admin.75317531.cn/'
+    crurl: 'http://test.guostory.com:8080',
+    userInfo:{}
   }
 })

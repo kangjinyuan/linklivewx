@@ -90,15 +90,14 @@
 }
 
 .topaybtn {
-  width: 120rpx;
-  padding-left: 40rpx;
+  width: 160rpx;
   height: 100%;
   float: right;
   background-color: #fda414;
   font-size: 30rpx;
   line-height: 88rpx;
   color: #fff;
-  position: relative;
+  text-align: center;
 }
 
 .topay {

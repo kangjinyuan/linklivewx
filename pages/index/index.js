@@ -7,54 +7,74 @@ Page({
     keynums: true,
     newenergy: 1,
     getuserstate: 0,
-    selected: '0',
-    carselected: '',
+    selected: 0,
+    carselected: -1,
     carno: '',
     carnoarr: [{
-      selected: '1',
+      selected: 1,
       carno: ''
     }, {
-      selected: '2',
+      selected: 2,
       carno: ''
     }, {
-      selected: '3',
+      selected: 3,
       carno: ''
     }, {
-      selected: '4',
+      selected: 4,
       carno: ''
     }, {
-      selected: '5',
+      selected: 5,
       carno: ''
     }, {
-      selected: '6',
+      selected: 6,
       carno: ''
     }, {
-      selected: '7',
+      selected: 7,
       carno: ''
     }, {
-      selected: '8',
+      selected: 8,
       carno: ''
     }],
     carlist: [{
-      id: '0',
-      carno: '京A232332'
+      id: 0,
+      carno: '冀Z312323'
     }, {
-      id: '1',
-      carno: '赣A32133'
+      id: 1,
+      carno: '京Z32323'
     }, {
-      id: '2',
-      carno: '冀Z342344'
+      id: 2,
+      carno: '冀Z312923'
     }]
   },
+  // 去支付
   topay: function(e) {
     let that = this;
-    that.setData({
-      carselected: e.currentTarget.dataset.carid
-    })
-    wx.navigateTo({
-      url: '../pay/pay?carid=' + e.currentTarget.dataset.carid + '&carno=' + e.currentTarget.dataset.carno,
+    let carno = e.currentTarget.dataset.carno;
+    if (e.currentTarget.dataset.carid) {
+      that.setData({
+        carselected: e.currentTarget.dataset.carid
+      })
+    }
+    wx.login({
+      success: function(res) {
+        let paras = {
+          carno:carno,
+          accessCode: res.code
+        }
+        app.request('post', '/car/createOrder.do', paras, function(res) {
+          wx.navigateTo({
+            url: '../pay/pay?carno=' + carno + "&payinfo=" + res.data
+          })
+        }, function(res) {
+          wx.showToast({
+            title: '停车订单创建失败',
+            icon: 'none'
+          })
+        })
+      }
     })
   },
+  // 开启新能源
   setnewenergy: function() {
     let that = this;
     let carno = that.data.carno;
@@ -75,6 +95,7 @@ Page({
       })
     }
   },
+  // 设置车牌数组
   setcarnoarr: function(carno) {
     let that = this;
     let parasarr = carno.split("");
@@ -89,6 +110,7 @@ Page({
       carnoarr: carnoarr
     })
   },
+  // 显示省级键盘
   showprovinces: function() {
     let that = this;
     that.setData({
@@ -97,6 +119,7 @@ Page({
       selected: 1
     })
   },
+  // 显示车牌键盘
   showkeynums: function(e) {
     let that = this;
     let carnoarr = that.data.carnoarr;
@@ -118,6 +141,7 @@ Page({
       })
     }
   },
+  // 关闭键盘
   closekey: function() {
     let that = this;
     that.setData({
@@ -126,6 +150,7 @@ Page({
       selected: 0
     })
   },
+  // 选择省级键盘
   selectprovinces: function(e) {
     let that = this;
     let provinces = e.currentTarget.dataset.pro;
@@ -143,6 +168,7 @@ Page({
     })
     that.setcarnoarr(that.data.carno);
   },
+  // 选择数字键盘
   selectkeynums: function(e) {
     let that = this;
     let carno = that.data.carno;
@@ -171,6 +197,7 @@ Page({
     })
     that.setcarnoarr(that.data.carno);
   },
+  // 删除
   del: function() {
     let that = this;
     let ss = that.data.carno;
@@ -197,16 +224,23 @@ Page({
     })
     that.setcarnoarr(that.data.carno);
   },
+  // 获取授权
+  getuserinfo: function(e) {
+    let that = this;
+    if (e.detail.errMsg == "getUserInfo:ok") {
+      that.onShow();
+    }
+  },
   onShow: function() {
     let that = this;
     that.setData({
-      carselected: ''
+      carselected: -1
     })
-    // app.toLogin(function() {
-    //   let getuserstate = wx.getStorageSync('getuserstate');
-    //   that.setData({
-    //     getuserstate: getuserstate
-    //   })
-    // })
+    app.toLogin(function() {
+      let getuserstate = wx.getStorageSync('getuserstate');
+      that.setData({
+        getuserstate: getuserstate
+      })
+    })
   }
 })

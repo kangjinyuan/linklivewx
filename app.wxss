@@ -32,12 +32,9 @@ image {
   width: 690rpx;
   height: 82%;
   border-radius: 10rpx;
-  position: absolute;
-  top: 176rpx;
-  left: 0rpx;
-  right: 0rpx;
-  margin: auto auto;
+  margin: 0rem auto;
   overflow: hidden;
+  position: relative;
 }
 
 .titlebox {
