@@ -78,9 +78,9 @@ App({
       title: 'loading···'
     })
     let that = this;
-    let accountId = wx.getStorageSync("accountId");
+    let accessToken = wx.getStorageSync("accessToken");
     let timestamp = new Date().getTime();
-    paras.accountId = accountId;
+    paras.accessToken = accessToken;
     paras = JSON.stringify(paras);
     wx.request({
       url: that.globalData.crurl + rurl + "?timestamp=" + timestamp,
@@ -88,16 +88,47 @@ App({
       method: method,
       dataType: 'json',
       success: function (res) {
+        wx.hideLoading();
         if (res.data.code == '0000') {
           okcallback(res);
-        } else{
+        } else if (res.code == "0007" || res.code == "0006") {
+          wx.setStorageSync("accessToken", "");
+          wx.showModal({
+            title: '邻客社区员工端',
+            content: '登录状态过期,请先登录',
+            confirmText: '去登录',
+            confirmColor: '#fda414',
+            showCancel: false,
+            success: function (res) {
+              if (res.confirm) {
+                wx.navigateTo({
+                  url: '../login/login'
+                })
+              }
+            }
+          })
+        } else if (res.code == "0004") {
+          wx.showToast({
+            title: '数据已存在，请核对后再进行操作',
+            icon: 'none'
+          })
+        } else if (res.code == "0005") {
+          wx.showToast({
+            title: '数据不存在，请核对后再进行操作',
+            icon: 'none'
+          })
+        } else if (res.code == "0008") {
+          wx.showToast({
+            title: '服务器内部错误',
+            icon: 'none'
+          })
+        } else {
           nocallback(res);
         }
-        wx.hideLoading();
       },
       fail: function (res) {
         wx.showModal({
-          title: '邻客智慧停车',
+          title: '邻客社区员工端',
           content: 'sorry 服务器已经离开了地球',
           confirmColor: '#fda414',
           showCancel: false
@@ -107,15 +138,35 @@ App({
     })
   },
   loadMore: function (that, okcallback) {
-    if (that.data.page + 1 > that.data.pageSize) {
-      that.setData({ page: that.data.page })
+    if (that.data.page + 1 > that.data.totalPage) {
+      that.setData({
+        page: that.data.page
+      })
       wx.showToast({
         title: '没有更多了',
         icon: 'none'
       })
       return false;
     }
-    that.setData({ page: that.data.page + 1 });
+    that.setData({
+      page: that.data.page + 1
+    });
+    okcallback();
+  },
+  loadMore: function(that, okcallback) {
+    if (that.data.page + 1 > that.data.totalPage) {
+      that.setData({
+        page: that.data.page
+      })
+      wx.showToast({
+        title: '没有更多了',
+        icon: 'none'
+      })
+      return false;
+    }
+    that.setData({
+      page: that.data.page + 1
+    });
     okcallback();
   },
   setTime: function (time,callback){
