@@ -36,7 +36,7 @@
   border-radius: 10rpx;
 }
 
-.hlist .selected, .car .selected,.carnum .selected  {
+.hlist .selected, .car .selected, .carnum .selected {
   border: 2rpx solid #fda414;
 }
 
@@ -74,7 +74,8 @@
   text-align: center;
   color: #999;
 }
-.newenergy{
+
+.newenergy {
   width: 64rpx;
   height: 84rpx;
   font-size: 32rpx;
@@ -93,7 +94,7 @@
   z-index: 10000;
 }
 
-.keynum{
+.keynum {
   width: 100%;
   height: 430rpx;
   background-color: #d2d5dc;
@@ -126,7 +127,7 @@
   margin: auto auto;
 }
 
-.key-in image{
+.key-in image {
   width: 44rpx;
   height: 32rpx;
   position: absolute;
@@ -137,16 +138,16 @@
   margin: auto auto;
 }
 
-.key-del{
+.key-del {
   float: right;
 }
 
-.closebox{
+.closebox {
   width: 100%;
   height: 80rpx;
-  background-color:#efefef;
+  background-color: #efefef;
   border-top: 2rpx solid #ccc;
-  border-bottom: 2rpx solid #ccc; 
+  border-bottom: 2rpx solid #ccc;
 }
 
 .close {

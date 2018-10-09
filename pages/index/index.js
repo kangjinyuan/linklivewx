@@ -50,7 +50,34 @@ Page({
   topay: function(e) {
     let that = this;
     let carno = e.currentTarget.dataset.carno;
-    if (e.currentTarget.dataset.carid) {
+    let flag = e.currentTarget.dataset.flag;
+    if (flag == 0) {
+      if (that.data.carno == "") {
+        wx.showToast({
+          title: '请输入正确的车牌号',
+          icon: 'none'
+        })
+        return false;
+      }
+      if (that.data.newenergy == 1) {
+        if (that.data.carno.length < 7) {
+          wx.showToast({
+            title: '请输入正确的车牌号',
+            icon: 'none'
+          })
+          return false;
+        }
+      } else if (that.data.newenergy == 0) {
+        if (that.data.carno.length < 8) {
+          wx.showToast({
+            title: '请输入正确车牌号码',
+            icon: 'none'
+          })
+          return false;
+        }
+      }
+      carno = that.data.carno;
+    } else {
       that.setData({
         carselected: e.currentTarget.dataset.carid
       })
@@ -58,19 +85,22 @@ Page({
     wx.login({
       success: function(res) {
         let paras = {
-          carno:carno,
+          carno: carno,
           accessCode: res.code
         }
-        app.request('post', '/car/createOrder.do', paras, function(res) {
-          wx.navigateTo({
-            url: '../pay/pay?carno=' + carno + "&payinfo=" + res.data
-          })
-        }, function(res) {
-          wx.showToast({
-            title: '停车订单创建失败',
-            icon: 'none'
-          })
+        wx.navigateTo({
+          url: '../pay/pay?carno=' + carno
         })
+        // app.request('post', '/car/createOrder.do', paras, function(res) {
+        //   wx.navigateTo({
+        //     url: '../pay/pay?carno=' + carno + "&payinfo=" + res.data
+        //   })
+        // }, function(res) {
+        //   wx.showToast({
+        //     title: '停车订单创建失败',
+        //     icon: 'none'
+        //   })
+        // })
       }
     })
   },
@@ -234,7 +264,9 @@ Page({
   onShow: function() {
     let that = this;
     that.setData({
-      carselected: -1
+      provinces: true,
+      keynums: true,
+      carselected: -1,
     })
     app.toLogin(function() {
       let getuserstate = wx.getStorageSync('getuserstate');

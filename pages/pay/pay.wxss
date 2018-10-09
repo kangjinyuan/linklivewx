@@ -25,7 +25,7 @@
   height: 26rpx;
 }
 
-.line image, .topay image {
+.line image {
   width: 100%;
   height: 100%;
 }
@@ -69,6 +69,7 @@
 .paybox {
   width: 100%;
   height: 88rpx;
+  background-color: #fff;
   border-top: 1rpx solid #ccc;
   position: absolute;
   bottom: 0rpx;
@@ -98,14 +99,4 @@
   line-height: 88rpx;
   color: #fff;
   text-align: center;
-}
-
-.topay {
-  width: 21rpx;
-  height: 27rpx;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 110rpx;
-  margin: auto auto;
 }

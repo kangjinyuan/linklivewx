@@ -15,7 +15,7 @@
     <view class="keybox" hidden='{{keynums}}'>
       <view class='closebox'>
         <view class="close" bindtap='closekey'>
-         完成
+          完成
         </view>
       </view>
       <view class='keynum'>
@@ -55,12 +55,12 @@
         <view class='btn' wx-if='{{getuserstate == 0}}'>
           <button class='getUserbtn' open-type="getUserInfo" bindgetuserinfo='getuserinfo'>授权</button>
         </view>
-        <view class='btn' wx-if='{{getuserstate == 1}}' data-carno='carno' bindtap='topay'>查询</view>
+        <view class='btn' wx-if='{{getuserstate == 1}}' data-flag='0' bindtap='topay'>查询</view>
       </view>
       <view class='bbox'>
         <view class='btitle'>历史缴费车辆</view>
         <view class='hlist'>
-          <view wx:for='{{carlist}}' wx:key="{{item.id}}" data-carid='{{item.id}}' data-carno='{{item.carno}}' class="{{carselected == item.id ? 'selected' : '' }}" bindtap='topay'>{{item.carno}}</view>
+          <view wx:for='{{carlist}}' wx:key="{{item.id}}" data-carid='{{item.id}}' data-carno='{{item.carno}}' data-flag='1' class="{{carselected == item.id ? 'selected' : '' }}" bindtap='topay'>{{item.carno}}</view>
         </view>
       </view>
     </view>
