@@ -93,7 +93,7 @@ App({
         } else if (res.code == "0007" || res.code == "0006") {
           wx.setStorageSync("accessToken", "");
           wx.showModal({
-            title: '邻客社区员工端',
+            title: '邻客智慧停车',
             content: '登录状态过期,请先登录',
             confirmText: '去登录',
             confirmColor: '#fda414',
@@ -108,12 +108,12 @@ App({
           })
         } else if (res.code == "0004") {
           wx.showToast({
-            title: '数据已存在，请核对后再进行操作',
+            title: '操作内容已在闪向云端，请勿重复操作',
             icon: 'none'
           })
         } else if (res.code == "0005") {
           wx.showToast({
-            title: '数据不存在，请核对后再进行操作',
+            title: '操作内容不在闪向云端，请核对后操作',
             icon: 'none'
           })
         } else if (res.code == "0008") {
@@ -127,7 +127,7 @@ App({
       },
       fail: function(res) {
         wx.showModal({
-          title: '邻客社区员工端',
+          title: '邻客智慧停车',
           content: 'sorry 服务器已经离开了地球',
           confirmColor: '#fda414',
           showCancel: false
@@ -135,22 +135,6 @@ App({
         wx.hideLoading();
       }
     })
-  },
-  loadMore: function(that, okcallback) {
-    if (that.data.page + 1 > that.data.totalPage) {
-      that.setData({
-        page: that.data.page
-      })
-      wx.showToast({
-        title: '没有更多了',
-        icon: 'none'
-      })
-      return false;
-    }
-    that.setData({
-      page: that.data.page + 1
-    });
-    okcallback();
   },
   loadMore: function(that, okcallback) {
     if (that.data.page + 1 > that.data.totalPage) {
