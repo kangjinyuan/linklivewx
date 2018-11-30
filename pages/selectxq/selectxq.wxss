@@ -1,0 +1,104 @@
+.sreach-box {
+  width: 100%;
+  height: 152rpx;
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+}
+
+.sreach {
+  width: 612rpx;
+  padding-left: 78rpx;
+  height: 68rpx;
+  background-color: #f7f7f5;
+  border-radius: 34rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto auto;
+}
+
+.icon-left {
+  left: 30rpx;
+}
+
+.sreach-input, .sreach-input input {
+  width: 100%;
+  height: 100%;
+  font-size: 28rpx;
+  line-height: 68rpx;
+  color: #333;
+}
+
+.letter-box {
+  width: 28rpx;
+  height: 80%;
+  position: fixed;
+  top: 194rpx;
+  right: 30rpx;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -moz-box-orient: vertical;
+  -moz-box-direction: normal;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+
+.letter-box view {
+  width: 100%;
+  overflow: hidden;
+  font-size: 28rpx;
+  color: #fda414;
+  text-align: center;
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  flex: 1;
+  -webkit-flex: 1;
+}
+
+.xq-box {
+  width: 690rpx;
+  overflow: hidden;
+  padding-top: 152rpx;
+}
+
+.xqlist {
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 40rpx;
+}
+
+.xqlist:last-child {
+  margin-bottom: 0rpx;
+}
+
+.letter-name {
+  width: 100%;
+  font-size: 36rpx;
+  color: #333;
+}
+
+.xq-name-box {
+  width: 100%;
+  overflow: hidden;
+}
+
+.xq-name {
+  width: 100%;
+  height: 90rpx;
+  border-bottom: 2rpx solid #f5f5f5;
+  font-size: 30rpx;
+  line-height: 90rpx;
+  color: #333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

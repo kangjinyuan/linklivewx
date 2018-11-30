@@ -20,12 +20,15 @@
   line-height: 88rpx;
 }
 
-.hlist {
-  width: 100%;
+.car-history-box {
+  width: 610rpx;
+  height: 800rpx;
+  padding: 0rem 4rpx;
+  background-color: #fff;
   overflow: hidden;
 }
 
-.hlist view {
+.car-history-box view {
   padding: 17rpx 10rpx;
   float: left;
   margin-right: 20rpx;
@@ -36,43 +39,33 @@
   border-radius: 10rpx;
 }
 
-.hlist .selected, .car .selected, .carnum .selected {
+.car-history-box .selected, .carno-text-box .selected, .carnum .selected {
   border: 2rpx solid #fda414;
 }
 
-.addbox {
+.carno-text-box .car-add {
   width: 100%;
   height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
   border: 0rpx solid #ccc;
+  font-size: 18rpx;
+  line-height: 120rpx;
+  text-align: center;
+  color: #999;
 }
 
-.addbox .add {
-  width: 100%;
-  height: 52rpx;
-  position: relative;
-}
-
-.addbox .add image {
+.car-add .add {
   width: 20rpx;
   height: 20rpx;
   position: absolute;
-  top: 0;
+  top: 16rpx;
   left: 0;
   right: 0;
-  bottom: 0;
   margin: auto auto;
 }
 
-.addbox .text {
+.car-add .add image {
   width: 100%;
-  height: 18rpx;
-  font-size: 18rpx;
-  line-height: 18rpx;
-  text-align: center;
-  color: #999;
+  height: 100%;
 }
 
 .newenergy {
@@ -158,4 +151,23 @@
   color: #fda414;
   float: right;
   margin-right: 30rpx;
+}
+
+.dw {
+  height: 38rpx;
+  background-color: #fff;
+  font-size: 30rpx;
+  line-height: 38rpx;
+  color: #333;
+  position: absolute;
+  top: 41rpx;
+  left: 0rpx;
+  text-indent: 54rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.icon-left {
+  left: 40rpx;
 }

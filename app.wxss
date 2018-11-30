@@ -14,7 +14,6 @@ image {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 200rpx 0;
   box-sizing: border-box;
 }
 
@@ -28,64 +27,125 @@ image {
   background-size: 100% 100%;
 }
 
-.cbox {
+.bimg image, .icon-dw image, .icon-sreach image, .icon-nodata image {
+  width: 100%;
+  height: 100%;
+}
+
+.icon-left {
+  position: absolute;
+  left: 0rpx;
+  top: 0;
+  bottom: 0;
+  margin: auto auto;
+}
+
+.icon-right {
+  position: absolute;
+  top: 0;
+  right: 0rpx;
+  bottom: 0;
+  margin: auto auto;
+}
+
+.icon-dw {
+  width: 34rpx;
+  height: 38rpx;
+}
+
+.icon-sreach {
+  width: 28rpx;
+  height: 28rpx;
+}
+
+.car-box {
   width: 690rpx;
+  height: 100%;
+  margin: 0rem auto;
+}
+
+.car-title-box, .car-cbox {
+  width: 100%;
+}
+
+.car-title-box {
+  height: 176rpx;
+}
+
+.car-title, .car-dir {
+  width: 100%;
+  color: #fff;
+}
+
+.car-title {
+  height: 116rpx;
+  font-size: 36rpx;
+  line-height: 116rpx;
+}
+
+.car-dir {
+  height: 60rpx;
+  font-size: 30rpx;
+}
+
+.car-cbox {
   height: 82%;
   border-radius: 10rpx;
-  margin: 0rem auto;
   overflow: hidden;
   position: relative;
 }
 
-.titlebox {
-  width: 690rpx;
-  height: 176rpx;
-  margin: 0rpx auto;
-}
-
-.titlebox .title {
-  width: 100%;
-  height: 116rpx;
-  font-size: 36rpx;
-  line-height: 116rpx;
-  color: #fff;
-}
-
-.titlebox .dir {
-  width: 100%;
-  height: 66rpx;
-  font-size: 30rpx;
-  color: #fff;
-}
-
-.carbox {
+.car-query-box, .bbox, .dw {
   width: 610rpx;
   padding: 0rpx 40rpx;
+}
+
+.car-query-box {
   background-color: #fff;
-  margin: 0rpx auto;
   overflow: hidden;
 }
 
-.sreachcar {
+.carno {
   width: 100%;
   height: 88rpx;
-  margin: 0rpx auto;
   padding: 120rpx 0rpx 100rpx;
 }
 
+.carno-text-box {
+  width: 76.25rpx;
+  height: 100%;
+  position: relative;
+  float: left;
+}
+
+.carno-text-box .carno-text {
+  width: 64rpx;
+  height: 84rpx;
+  border-radius: 6rpx;
+  border: 2rpx solid #999;
+  font-size: 32rpx;
+  line-height: 84rpx;
+  text-align: center;
+  color: #333;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto auto;
+}
+
 .bbox {
-  width: 610rpx;
   height: 668rpx;
-  padding: 60rpx 40rpx 0rpx;
   background-color: #fff;
   overflow: hidden;
 }
 
 .bbox .btitle {
   width: 100%;
-  height: 60rpx;
-  font-size: 30rpx;
+  height: 36rpx;
+  font-size: 36rpx;
   color: #333;
+  padding: 60rpx 0rpx 40rpx;
 }
 
 .bbox .bctitle {
@@ -102,37 +162,39 @@ image {
   margin: auto auto;
 }
 
-.bimg image {
+.nodata-box {
   width: 100%;
   height: 100%;
+  background-color: #fafafa;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
-.car {
-  width: 610rpx;
-  height: 100%;
-  margin: 0rpx auto;
-}
-
-.car-text-box {
-  width: 76.25rpx;
-  height: 100%;
-  position: relative;
-  float: left;
-}
-
-.car-text-box .car-text {
-  width: 64rpx;
-  height: 84rpx;
-  border-radius: 6rpx;
-  border: 2rpx solid #999;
-  font-size: 32rpx;
-  line-height: 84rpx;
-  text-align: center;
-  color: #333;
-  float: left;
+.nodata {
+  width: 330rpx;
+  height: 380rpx;
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
+  bottom: 0;
   margin: auto auto;
+}
+
+.nodata view {
+  width: 100%;
+}
+
+.nodata-community {
+  height: 196rpx;
+}
+
+.nodata .text {
+  width: 100%;
+  height: 170rpx;
+  font-size: 28rpx;
+  line-height: 170rpx;
+  text-align: center;
+  color: #999;
 }

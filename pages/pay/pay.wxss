@@ -30,53 +30,42 @@
   height: 100%;
 }
 
-.payinfobox {
+.car-pay-info-box {
   width: 100%;
-  margin: 20rpx auto 0rpx;
-  position: relative;
-}
-
-.payinfo {
-  width: 304rpx;
-  height: 90rpx;
   overflow: hidden;
-  float: left;
 }
 
-.payinfo .title {
+.car-pay-info {
   width: 100%;
-  height: 60rpx;
+}
+
+.car-pay-info .title, .car-pay-info .info {
+  width: 100%;
   text-align: center;
+}
+
+.car-pay-info .title {
   font-size: 30rpx;
+  height: 60rpx;
   color: #333;
 }
 
-.payinfo .info {
-  width: 100%;
-  text-align: center;
+.car-pay-info .info {
   font-size: 26rpx;
   color: #498ad2;
 }
 
-.cutline {
-  width: 2rpx;
-  height: 50rpx;
-  float: left;
-  margin-top: 20rpx;
-  background-color: #ccc;
-}
-
-.paybox {
+.car-cbox .pay-box {
   width: 100%;
   height: 88rpx;
   background-color: #fff;
-  border-top: 1rpx solid #ccc;
+  border-top: 2rpx solid #ccc;
   position: absolute;
   bottom: 0rpx;
   left: 0rpx;
 }
 
-.paymoney {
+.car-cbox .pay-box .pay-fee {
   width: auto;
   height: 100%;
   font-size: 30rpx;
@@ -86,11 +75,12 @@
   margin-left: 40rpx;
 }
 
-.paymoney text {
+.car-cbox .pay-box .pay-fee span {
+  font-size: 36rpx;
   color: #fda414;
 }
 
-.topaybtn {
+.car-cbox .pay-box .pay-btn {
   width: 160rpx;
   height: 100%;
   float: right;

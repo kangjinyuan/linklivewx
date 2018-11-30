@@ -1,0 +1,31 @@
+<view class="container">
+  <view class='sreach-box'>
+    <view class='sreach'>
+      <view class='icon-left icon-sreach'>
+        <image src='../../images/icon-sreach.png'></image>
+      </view>
+      <view class='sreach-input'>
+        <input type='text' name='' value='' placeholder='请输入社区名称' bindinput='sreachcommunity'></input>
+      </view>
+    </view>
+  </view>
+  <view class='nodata-box' wx:if='{{xqlist.length == 0}}'>
+    <view class='nodata'>
+      <view class='icon-nodata nodata-community'>
+        <image src='../../images/icon-community-nodata.png'></image>
+      </view>
+      <view class='text'>当前没有社区信息</view>
+    </view>
+  </view>
+  <view class='xq-box' wx:else>
+    <view class='letter-box'>
+      <view wx:for='{{xqlist}}' wx:key="{{item.code}}" data-code='{{item.code}}' bindtap='pageScrollTo'>{{item.code}}</view>
+    </view>
+    <view class='xqlist' wx:for='{{xqlist}}' wx:key="{{item.code}}" id='{{item.code}}'>
+      <view class='letter-name'>{{item.code}}</view>
+      <view class='xq-name-box'>
+        <view class='xq-name' wx:for='{{item.community}}' wx:key="{{item.id}}" data-xqinfo='{{item}}' bindtap='selectxq'>{{item.name}}</view>
+      </view>
+    </view>
+  </view>
+</view>

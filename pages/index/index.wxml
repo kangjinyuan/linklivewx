@@ -1,66 +1,78 @@
 <view class='container'>
   <view class='cbg'>
-    <view class="keybox" hidden='{{provinces}}'>
-      <view class='closebox'>
-        <view class="close" bindtap='closekey'>
-          完成
+    <view class='car-box'>
+      <view class="keybox" hidden='{{provinces}}'>
+        <view class='closebox'>
+          <view class="close" bindtap='closekey'>
+            完成
+          </view>
         </view>
-      </view>
-      <view class='keynum'>
-        <view class='key' wx:for="{{item1}}" wx:key="{{item}}">
-          <view class='key-in' bindtap='selectprovinces' data-pro='{{item}}'>{{item}}</view>
-        </view>
-      </view>
-    </view>
-    <view class="keybox" hidden='{{keynums}}'>
-      <view class='closebox'>
-        <view class="close" bindtap='closekey'>
-          完成
-        </view>
-      </view>
-      <view class='keynum'>
-        <view class='key' wx:for="{{item2}}" wx:key="{{item}}">
-          <view class='key-in' bindtap='selectkeynums' data-key="{{item}}">{{item}}</view>
-        </view>
-        <view class='key key-del'>
-          <view class='key-in' bindtap='del'>
-            <image src='../../images/del.png'></image>
+        <view class='keynum'>
+          <view class='key' wx:for="{{item1}}" wx:key="{{item}}">
+            <view class='key-in' bindtap='selectprovinces' data-pro='{{item}}'>{{item}}</view>
           </view>
         </view>
       </view>
-    </view>
-    <view class='titlebox'>
-      <view class='title'>欢迎使用邻客智慧停车服务</view>
-      <view class='dir'>请输入有效的车牌号码</view>
-    </view>
-    <view class='cbox'>
-      <view class='bimg'>
-        <image src='../../images/carbg.png'></image>
-      </view>
-      <view class='carbox'>
-        <view class='sreachcar'>
-          <view class='car'>
-            <view class='car-text-box' wx:for='{{carnoarr}}' wx:key="item.selected">
-              <view wx-if="{{item.selected == 1}}" class="car-text {{selected == item.selected ? 'selected' : '' }}" data-selected="{{item.selected}}" bindtap='showprovinces'>{{item.carno}}</view>
-              <view wx-if="{{item.selected != 1}}" class="car-text {{selected == item.selected ? 'selected' : '' }}" data-selected="{{item.selected}}" bindtap='showkeynums'>{{item.carno}}</view>
-              <view bindtap='setnewenergy' wx-if='{{item.selected == 8 && newenergy == 1}}' class='addbox'>
-                <view class='add'>
-                  <image src='../../images/add.png'></image>
-                </view>
-                <view class='text'>新能源</view>
-              </view>
+      <view class="keybox" hidden='{{keynums}}'>
+        <view class='closebox'>
+          <view class="close" bindtap='closekey'>
+            完成
+          </view>
+        </view>
+        <view class='keynum'>
+          <view class='key' wx:for="{{item2}}" wx:key="{{item}}">
+            <view class='key-in' bindtap='selectkeynums' data-key="{{item}}">{{item}}</view>
+          </view>
+          <view class='key key-del'>
+            <view class='key-in' bindtap='delcarno'>
+              <image src='../../images/del.png'></image>
             </view>
           </view>
         </view>
-        <view class='btn' wx-if='{{getuserstate == 0}}'>
-          <button class='getUserbtn' open-type="getUserInfo" bindgetuserinfo='getuserinfo'>授权</button>
-        </view>
-        <view class='btn' wx-if='{{getuserstate == 1}}' data-flag='0' bindtap='topay'>查询</view>
       </view>
-      <view class='bbox'>
-        <view class='btitle'>历史缴费车辆</view>
-        <view class='hlist'>
-          <view wx:for='{{carlist}}' wx:key="{{item.id}}" data-carid='{{item.id}}' data-carno='{{item.carno}}' data-flag='1' class="{{carselected == item.id ? 'selected' : '' }}" bindtap='topay'>{{item.carno}}</view>
+      <view class='car-title-box'>
+        <view class='car-title'>欢迎使用邻客智慧停车服务</view>
+        <view class='car-dir'>请输入有效的车牌号码</view>
+      </view>
+      <view class='car-cbox'>
+        <view class='bimg'>
+          <image src='../../images/carbg.png'></image>
+        </view>
+        <view wx:if="{{xqinfo}}" class='dw' bindtap='selectxq'>
+          <view class='icon-dw icon-left'>
+            <image src='../../images/icon-dw.png'></image>
+          </view>
+          {{xqinfo.name}}
+        </view>
+        <view wx:else class='dw' bindtap='selectxq'>
+          <view class='icon-dw icon-left'>
+            <image src='../../images/icon-dw.png'></image>
+          </view>
+          请选择所在社区
+        </view>
+        <view class='car-query-box'>
+          <view class='carno'>
+            <view class='carno-text-box' wx:for='{{carnoarr}}' wx:key="item">
+              <view wx:if="{{index == 0}}" class="carno-text {{selected == 0 ? 'selected' : '' }}" bindtap='showprovinces'>{{item}}</view>
+              <view wx:if="{{index != 0}}" class="carno-text {{selected == index ? 'selected' : '' }}" data-index="{{index}}" bindtap='showkeynums'>{{item}}</view>
+              <view bindtap='setnewenergy' wx:if='{{index == 7 && newenergy == 1}}' class='carno-text car-add'>
+                <view class='add'>
+                  <image src='../../images/add.png'></image>
+                </view>
+                新能源
+              </view>
+            </view>
+          </view>
+          <view class='btn' wx:if='{{accessToken}}' data-flag='0' bindtap='topay'>查询</view>
+          <view class='btn' wx:else>
+            <button class='getUserbtn' open-type="getUserInfo" bindgetuserinfo='getuserinfo'>授权</button>
+          </view>
+        </view>
+        <view class='bbox'>
+          <view class='btitle' style='display:none;'>历史缴费车辆</view>
+          <view class='car-history-box' style='display:none;'>
+            <view wx:for='{{carlist}}' wx:key="{{item.id}}" data-carid='{{item.id}}' data-carno='{{item.carno}}' data-flag='1' class="{{carselected == item.id ? 'selected' : '' }}" bindtap='topay'>{{item.carno}}</view>
+          </view>
         </view>
       </view>
     </view>

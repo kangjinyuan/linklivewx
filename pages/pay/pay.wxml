@@ -1,41 +1,36 @@
 <view class='container'>
   <view class='cbg'>
-    <view class='titlebox'>
-      <view class='title'>欢迎使用邻客智慧停车服务</view>
-      <view class='dir'>邻客缴费</view>
-    </view>
-    <view class='cbox'>
-      <view class='carbox'>
-        <view class='sreachcar'>
-          <view class='car'>
-            <view class='car-text-box' wx:for='{{carnoarr}}' wx:key="item">
-              <view class='car-text'>{{item}}</view>
+    <view class='car-box'>
+      <view class='car-title-box'>
+        <view class='car-title'>欢迎使用邻客智慧停车服务</view>
+        <view class='car-dir'>邻客缴费</view>
+      </view>
+      <view class='car-cbox'>
+        <view class='car-query-box'>
+          <view class='carno'>
+            <view class='carno-text-box' wx:for='{{carnoarr}}' wx:key="item">
+              <view class='carno-text'>{{item}}</view>
             </view>
           </view>
         </view>
-      </view>
-      <view class='line'>
-        <image src='../../images/line.png'></image>
-      </view>
-      <view class='bbox'>
-        <view class='btitle bctitle'>已停10分钟</view>
-        <view class='payinfobox'>
-          <view class='payinfo'>
-            <view class='title'>停车单价</view>
-            <view class='info'>5元/小时</view>
-          </view>
-          <view class='cutline'></view>
-          <view class='payinfo'>
-            <view class='title'>入场时间</view>
-            <view class='info'>2018-08-22 13:34</view>
+        <view class='line'>
+          <image src='../../images/line.png'></image>
+        </view>
+        <view class='bbox'>
+          <view class='btitle bctitle'>已停{{payinfo.serviceTime}}分钟</view>
+          <view class='car-pay-info-box'>
+            <view class='car-pay-info'>
+              <view class='title'>入场时间</view>
+              <view class='info'>{{payinfo.startTime}}</view>
+            </view>
           </view>
         </view>
-      </view>
-      <view class='paybox'>
-        <view class='paymoney'>待支付：
-          <text>5.00</text>元</view>
-        <view class='topaybtn' bindtap='pay'>
-          支付
+        <view class='pay-box'>
+          <view class='pay-fee'>待支付：
+            <text>{{payinfo.totalFee}}</text>元</view>
+          <view class='pay-btn' bindtap='pay'>
+            支付
+          </view>
         </view>
       </view>
     </view>
