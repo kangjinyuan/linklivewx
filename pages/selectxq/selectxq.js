@@ -48,7 +48,7 @@ Page({
     }
     paras = JSON.stringify(paras);
     wx.request({
-      url: crurl + "/community/queryList.do?timestamp=" + timestamp,
+      url: crurl + "/property/community/queryList.do?timestamp=" + timestamp,
       data: paras,
       method: 'POST',
       dataType: 'json',

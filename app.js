@@ -37,7 +37,7 @@ App({
               platform: 'wx_xcx',
               accessCode: res.code
             }
-            that.request('post', '/account/thirdPartyLogin.do', paras, function(res) {
+            that.request('post', '/account/mobile/thirdPartyLogin.do', paras, function(res) {
               wx.setStorageSync('accessToken', res.data.accessToken);
               callback();
             }, function() {
@@ -185,7 +185,7 @@ App({
     }
   },
   globalData: {
-    crurl: 'http://test.api.15275317531.com:8080',
+    crurl: 'http://test.api.15275317531.com',
     // crurl: 'https://api.15275317531.com',
     // crurl: 'http://192.168.0.179:8080/linklive',
     userInfo: {}

@@ -26,6 +26,7 @@ Page({
     let that = this;
     let carno = e.currentTarget.dataset.carno;
     let flag = e.currentTarget.dataset.flag;
+    let xqinfo = that.data.xqinfo;
     if (flag == 0) {
       if (that.data.carno == "") {
         wx.showToast({
@@ -57,16 +58,15 @@ Page({
         carselected: e.currentTarget.dataset.carno
       })
     }
-    let xqinfo = that.data.xqinfo;
     if (xqinfo) {
       if (xqinfo.parkCode) {
         let paras = {
-          number: carno
+          carNo: carno
         }
-        app.request('post', '/car/queryOrderByCarNo.do', paras, function(res) {
-          let payinfo = res.data.data;
+        app.request('post', '/property/park/queryOrderByCarNo.do', paras, function(res) {
+          let payinfo = JSON.stringify(res.data.data);
           wx.navigateTo({
-            url: '../pay/pay?carno=' + carno + '&payinfo=' + JSON.stringify(payinfo),
+            url: '../pay/pay?carno=' + carno + '&payinfo=' + payinfo
           })
         }, function(res) {
           wx.showModal({

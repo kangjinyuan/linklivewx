@@ -9,15 +9,16 @@ Page({
     let that = this;
     let payinfo = that.data.payinfo;
     let carno = that.data.carno;
+    let xqinfo = wx.getStorageSync('xqinfo');
     wx.login({
       success: function(res) {
         let paras = {
-          number: carno,
+          carNo: carno,
           accessCode: res.code,
-          tradeType: 'JSAPI',
-          parkCode: payinfo.parkCode
+          payPlatform: 'JSAPI',
+          communityId: xqinfo.communityId
         }
-        app.request('post', '/pay/wx/payParkOrder.do', paras, function(res) {
+        app.request('post', '/pay/wxpay/payTempParkOrder.do', paras, function(res) {
           wx.requestPayment({
             timeStamp: res.data.data.timeStamp,
             nonceStr: res.data.data.nonceStr,
